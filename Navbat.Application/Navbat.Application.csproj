@@ -16,9 +16,4 @@
     <ProjectReference Include="..\Navbat.Domain\Navbat.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="UseCases\Queue\" />
-    <Folder Include="UseCases\ServiceCategory\" />
-  </ItemGroup>
-
 </Project>
