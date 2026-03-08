@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Navbat.API/Navbat.API.csproj" />
+  <Project Path="Navbat.Application/Navbat.Application.csproj" />
+  <Project Path="Navbat.Domain/Navbat.Domain.csproj" />
+  <Project Path="Navbat.Infrastructure/Navbat.Infrastructure.csproj" />
+</Solution>
