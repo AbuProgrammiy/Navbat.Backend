@@ -13,6 +13,7 @@ namespace Navbat.Infrastructure.Persistance
         public DbSet<ServiceModel> Services { get; set; }
         public DbSet<ServiceCategoryModel> ServiceCategories { get; set; }
         public DbSet<QueueModel> Queues { get; set; }
+        public DbSet<TemporaryCodeModel> TemporaryCodes { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {

@@ -1,34 +1,51 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Navbat.API.Extensions;
+using Navbat.Application.UseCases.Auth.Commands;
 
 namespace Navbat.API.Controllers
 {
-    [Route("api/[controller]/[action]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class AuthController : ControllerBase
     {
-        [HttpGet]
-        public bool SignUp()
+        private readonly IMediator _mediator;
+
+        public AuthController(IMediator mediator)
         {
-            return true;
+            _mediator = mediator;
         }
 
-        [HttpGet]
-        public bool LogIn()
+        [HttpPost]
+        [Route("send-code")]
+        public async Task<IActionResult> SendCode(SendTemporaryCodeCommand request)
         {
-            return true;
+            return (await _mediator.Send(request)).ToActionResult();
         }
 
-        [HttpGet]
-        public bool ForgotPassword()
+        [HttpPost]
+        [Route("verify-code")]
+        public async Task<IActionResult> VerifyCode(VerifyTemporaryCodeCommand request)
         {
-            return true;
+            return (await _mediator.Send(request)).ToActionResult();
         }
 
-        [HttpGet]
-        public bool RefreshToken()
+
+        [HttpPost("forgot-password")]
+        public IActionResult ForgotPassword()
         {
-            return true;
+            // Not implemented yet
+            return StatusCode(StatusCodes.Status501NotImplemented);
+        }
+
+        [HttpPost("refresh-token")]
+        public IActionResult RefreshToken()
+        {
+            // Not implemented yet
+            return StatusCode(StatusCodes.Status501NotImplemented);
         }
     }
 }

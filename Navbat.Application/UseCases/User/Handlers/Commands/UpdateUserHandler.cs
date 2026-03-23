@@ -20,16 +20,18 @@ namespace Navbat.Application.UseCases.User.Handlers.Commands
 
         public async Task<UserModel> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
         {
-            UserModel user=await _context.Users.FirstOrDefaultAsync(x=>x.Id == request.Id);
+            UserModel user = await _context.Users.FirstOrDefaultAsync(x => x.Id == request.Id);
 
-            if (user == null) {
+            if (user == null)
+            {
                 return null;
             }
 
-            user.Name=request.Name;
-            user.Email=request.Email;
-            user.PhoneNumber=request.PhoneNumber;
-            user.ChatId=request.ChatId;
+            user.FirstName = request.FirstName;
+            user.LastName = request.LastName;
+            user.Email = request.Email;
+            user.PhoneNumber = request.PhoneNumber;
+            user.ChatId = request.ChatId;
 
             await _context.SaveChangesAsync();
 

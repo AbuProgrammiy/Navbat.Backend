@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Navbat.Application.UseCases.Queue.Commands;
@@ -8,6 +9,7 @@ namespace Navbat.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class QueueController : ControllerBase
     {
         private readonly IMediator _mediator;

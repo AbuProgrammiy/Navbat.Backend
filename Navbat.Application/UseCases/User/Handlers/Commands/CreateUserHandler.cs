@@ -23,7 +23,8 @@ namespace Navbat.Application.UseCases.User.Handlers.Commands
             {
                 Id = Guid.NewGuid(),
                 Age = request.Age,
-                Name = request.Name,
+                FirstName = request.FirstName,
+                LastName = request.LastName,
                 ChatId = request.ChatId,
                 Email = request.Email,
                 PhoneNumber = request.PhoneNumber

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Navbat.Application.Services.AuthService;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -16,6 +17,8 @@ namespace Navbat.Application
             {
                 cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
             });
+
+            services.AddScoped<IAuthService, AuthService>();
 
             return services;
         }

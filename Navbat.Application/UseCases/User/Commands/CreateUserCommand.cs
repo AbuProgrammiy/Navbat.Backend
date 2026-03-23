@@ -8,7 +8,8 @@ namespace Navbat.Application.UseCases.User.Commands
 {
     public class CreateUserCommand : IRequest<UserModel>
     {
-        public string Name { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public byte Age { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }

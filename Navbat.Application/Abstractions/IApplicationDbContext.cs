@@ -12,6 +12,7 @@ namespace Navbat.Application.Abstractions
         DbSet<ServiceModel> Services { get; set; }
         DbSet<ServiceCategoryModel> ServiceCategories { get; set; }
         DbSet<QueueModel> Queues { get; set; }
+        DbSet<TemporaryCodeModel> TemporaryCodes { get; set; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);//CancellationToken cancellationToken = default); 
     }
