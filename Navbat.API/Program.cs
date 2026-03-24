@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi;
 using Navbat.Application;
@@ -15,31 +16,25 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
-builder.Services.AddSwaggerGen();
-builder.Services.AddSwaggerGen(options =>       //Swaggerni nastroyka qilish. Swaggerda Authorization qilish uchun quluf iconcasini chiqarish uchun
-{
-    options.SwaggerDoc("v1", new OpenApiInfo { Title = "Authentication Sample", Version = "v1.0.0", Description = "Authentication Sample Simple" });
 
-    var securityShceme = new OpenApiSecurityScheme
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new OpenApiInfo
     {
-        Description = "Greeting Methodini ishlatish uchun Avtorizatsiya qilishingiz kerak",
+        Title = "Authentication Sample",
+        Version = "v1.0.0"
+    });
+
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
         Name = "Authorization",
+        Description = "Enter: Bearer {your token}",
         In = ParameterLocation.Header,
         Type = SecuritySchemeType.Http,
         Scheme = "bearer",
-        //Reference = new OpenApiReference
-        //{
-        //    Type = ReferenceType.SecurityScheme,
-        //    Id = "Bearer"
-        //}
-    };
+        BearerFormat = "JWT"
+    });
 
-    options.AddSecurityDefinition("Bearer", securityShceme);
-    //var securityRequirement = new OpenApiSecurityRequirement
-    //            {
-    //                {securityShceme,new[] {"Bearer"} }
-    //            };
-    //options.AddSecurityRequirement(securityRequirement);
 });
 
 
