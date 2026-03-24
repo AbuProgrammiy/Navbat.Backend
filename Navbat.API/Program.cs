@@ -84,5 +84,5 @@ app.UseAuthentication();    // yuqoridagi AddAuthentication ishlatib qoyish -21
 app.UseAuthorization();
 
 app.MapControllers();
-
+app.UseRouting();
 app.Run();
